@@ -8,11 +8,11 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include android:id="@+id/menuAtas"
+    <include
+        android:id="@+id/menuAtas"
         layout="@layout/menu_atas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button1"
@@ -133,7 +133,7 @@
 
     <RadioGroup
         android:id="@+id/radio_group"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:checkedButton="@id/radioButtonSad">
@@ -158,7 +158,7 @@
             android:padding="10dp"
             android:textSize="14sp"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="205dp"
+            android:layout_marginTop="210dp"
             android:layoutDirection="ltr"
             android:button="@drawable/custom_icon"/>
         <RadioButton
@@ -168,8 +168,8 @@
             android:text="Mad"
             android:padding="10dp"
             android:textSize="14sp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="205dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="210dp"
             android:layoutDirection="ltr"
             android:button="@drawable/custom_icon"/>
     </RadioGroup>
