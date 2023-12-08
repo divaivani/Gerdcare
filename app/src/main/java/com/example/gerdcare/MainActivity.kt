@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.Window
@@ -20,11 +21,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val submitButton: Button = findViewById(R.id.button)
-        val okButton: Button = findViewById(R.id.okeButton)
+//        val okButton: Button = findViewById(R.id.okeButton)
 
-        okButton.setOnClickListener { // Tambahkan logika notifikasi di sini
-            showNotification()
-        }
+//        okButton.setOnClickListener { // Tambahkan logika notifikasi di sini
+//            showNotification()
+//        }
         submitButton.setOnClickListener {
             showPopup()
         }
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun showPopup() {
         val dialog = Dialog(this)
 
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.conditionpopup)
 
