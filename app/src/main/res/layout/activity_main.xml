@@ -8,11 +8,11 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/menuAtas"
+    <include android:id="@+id/menuAtas"
         layout="@layout/menu_atas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button1"
@@ -124,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="122dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="170dp"
         android:text="How's your feeling today?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,10 +133,9 @@
 
     <RadioGroup
         android:id="@+id/radio_group"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:checkedButton="@id/radioButtonSad">
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/radioButtonSad"
@@ -145,8 +144,8 @@
             android:text="Sad"
             android:padding="10dp"
             android:textSize="14sp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="185dp"
             android:layoutDirection="ltr"
             android:button="@drawable/custom_icon"/>
 
@@ -157,8 +156,8 @@
             android:text="Happy"
             android:padding="10dp"
             android:textSize="14sp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="185dp"
             android:layoutDirection="ltr"
             android:button="@drawable/custom_icon"/>
         <RadioButton
@@ -168,8 +167,8 @@
             android:text="Mad"
             android:padding="10dp"
             android:textSize="14sp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="185dp"
             android:layoutDirection="ltr"
             android:button="@drawable/custom_icon"/>
     </RadioGroup>
@@ -179,7 +178,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="138dp"
-        android:layout_marginTop="265dp"
+        android:layout_marginTop="245dp"
         android:text="Rate your emotion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -187,6 +186,7 @@
         tools:textStyle="bold" />
 
     <RadioGroup
+        android:id="@+id/radiorate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
@@ -194,27 +194,57 @@
             android:id="@+id/radioButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:button="@drawable/raterb"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="285dp"/>
+            android:layout_marginTop="265dp"/>
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:button="@drawable/raterb"
             android:layout_marginStart="180dp"
-            android:layout_marginTop="-50dp"/>
+            android:layout_marginTop="-23dp"/>
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:button="@drawable/raterb"
             android:layout_marginStart="300dp"
-            android:layout_marginTop="-50dp"/>
+            android:layout_marginTop="-25dp"/>
     </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/radiorate"
+        android:layout_marginStart="60dp">
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"/>
+
+        <TextView
+            android:id="@+id/t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:text="2"/>
+
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="115dp"
+            android:text="3"/>
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="365dp"
         android:layout_height="275dp"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="342dp"
+        android:layout_marginTop="322dp"
         android:background="@drawable/frambg"
         android:elevation="10dp">
 
@@ -233,7 +263,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="32dp"
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:button="@drawable/cbstyle"
@@ -244,7 +274,6 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="22dp"
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:button="@drawable/cbstyle"
@@ -255,7 +284,6 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="22dp"
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:button="@drawable/cbstyle"
@@ -266,7 +294,6 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="22dp"
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:button="@drawable/cbstyle"
@@ -277,7 +304,6 @@
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginTop="22dp"
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:button="@drawable/cbstyle"
@@ -288,10 +314,12 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="620dp"
-        android:backgroundTint="#FF597B"
-        android:text="SUBMIT" />
+        android:layout_marginTop="610dp"
+        android:background="@drawable/submitbtn"
+        android:text="SUBMIT"
+        android:textColor="@color/white"
+        android:textSize="20dp"/>
 </RelativeLayout>

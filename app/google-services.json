@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "715709841632",
+    "project_id": "conditionnotification",
+    "storage_bucket": "conditionnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715709841632:android:a2d644576dc57b9cbe1085",
+        "android_client_info": {
+          "package_name": "com.example.gerdcare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEBWW2a6spf9z6-f_lAoSZL9X5klaqUIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
