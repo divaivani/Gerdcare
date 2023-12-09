@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ConditionPage">
 
     <include android:id="@+id/menuAtas"
         layout="@layout/menu_atas"
@@ -322,4 +322,13 @@
         android:text="SUBMIT"
         android:textColor="@color/white"
         android:textSize="20dp"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/menu_bawah_actdua"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        app:tabMode="fixed"
+        app:tabIndicatorHeight="0dp"/>
 </RelativeLayout>
