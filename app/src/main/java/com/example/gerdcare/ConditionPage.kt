@@ -4,26 +4,25 @@ import android.app.Dialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.graphics.Color
 import android.graphics.PorterDuff
-import android.util.Log
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.getSystemService
 import com.google.android.material.tabs.TabLayout
-
 
 class ConditionPage : AppCompatActivity() {
 
-    private val CHANNEL_ID = "channel_id_example_01";
+    private val CHANNEL_ID = "channel_id_example_01"
     private val notificationId = 101
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_condition)
@@ -31,13 +30,8 @@ class ConditionPage : AppCompatActivity() {
         createNotificationChannel()
 
         val submitButton: Button = findViewById(R.id.button)
-        val okButton: Button = findViewById(R.id.okeButton)
-
         ferguso()
 
-        okButton.setOnClickListener { // Tambahkan logika notifikasi di sini
-            sendNotification()
-        }
         submitButton.setOnClickListener {
             showPopup()
         }
@@ -46,7 +40,7 @@ class ConditionPage : AppCompatActivity() {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "GerdCare Condition Record"
-            val descriptionText = "Your condition is bad, you need to take a deep breath to netralize your feeling before continue your job"
+            val descriptionText = "Your condition is bad, you need to take a deep breath to neutralize your feeling before continuing your job"
             val importance: Int = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
@@ -95,6 +89,7 @@ class ConditionPage : AppCompatActivity() {
         val okeButton: Button = dialog.findViewById(R.id.okeButton)
 
         okeButton.setOnClickListener {
+            sendNotification()
             dialog.dismiss()
         }
 
@@ -123,11 +118,7 @@ class ConditionPage : AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 when (tab.position) {
-//                    0 -> {
-//                        startActivity(Intent(this@MainActivity, DocumentActivity::class.java))
-//                    }
                     2 -> {
-                        //startActivity(Intent(this@MainActivity, Registration::class.java))
                     }
                 }
                 for (i in 0 until tabLayout.tabCount) {
@@ -144,7 +135,6 @@ class ConditionPage : AppCompatActivity() {
                         )
                     }
                 }
-
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab) {
@@ -160,4 +150,3 @@ class ConditionPage : AppCompatActivity() {
         })
     }
 }
-
