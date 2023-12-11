@@ -3,9 +3,11 @@ package com.example.gerdcare
 import android.app.Dialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.util.Log
 import android.os.Build
 import android.os.Bundle
 import android.view.Window
@@ -14,13 +16,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
 import com.google.android.material.tabs.TabLayout
 
 
 class ConditionPage : AppCompatActivity() {
+
+    private val CHANNEL_ID = "channel_id_example_01";
+    private val notificationId = 101
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_condition)
+
+        createNotificationChannel()
 
         val submitButton: Button = findViewById(R.id.button)
         val okButton: Button = findViewById(R.id.okeButton)
@@ -28,45 +36,52 @@ class ConditionPage : AppCompatActivity() {
         ferguso()
 
         okButton.setOnClickListener { // Tambahkan logika notifikasi di sini
-            showNotification()
+            sendNotification()
         }
         submitButton.setOnClickListener {
             showPopup()
         }
- }
-
-    private fun showNotification() {
-        val channelId = "Gerdcare"
-        val notificationId = 1
-
-        val notificationManager = NotificationManagerCompat.from(this)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            createNotificationChannel(channelId, notificationManager)
-        }
-
-        val notification: NotificationCompat.Builder = NotificationCompat.Builder(this, channelId)
-            //.setSmallIcon(R.drawable.ic_notification)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
-            .setContentTitle("Title")
-            .setContentText("Your notification content here.")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-       // notificationManager.notify(notificationId, notification.build())
     }
 
-    private fun createNotificationChannel(channelId: String, notificationManager: NotificationManagerCompat) {
+    private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "My Channel"
-            val descriptionText = "Channel description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(channelId, name, importance).apply {
+            val name = "GerdCare Condition Record"
+            val descriptionText = "Your condition is bad, you need to take a deep breath to netralize your feeling before continue your job"
+            val importance: Int = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
-                enableLights(true)
-                lightColor = Color.RED
-                enableVibration(true)
             }
-            notificationManager.createNotificationChannel(channel)
+
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(channel)
+        }
+    }
+
+    private fun sendNotification() {
+        val builder: NotificationCompat.Builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle("Example Title")
+            .setContentText("Example Description")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        val notificationManagerCompat = NotificationManagerCompat.from(this)
+
+        Log.d("NotificationDebug", "Builder: ${builder.build()}")
+        Log.d("NotificationDebug", "ManagerCompat: $notificationManagerCompat")
+        Log.d("NotificationDebug", "NotificationId: $notificationId")
+
+        notificationManagerCompat ?: run {
+            Log.e("NotificationDebug", "NotificationManagerCompat is null")
+            return
+        }
+
+        try {
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.notify(notificationId, builder.build())
+            Log.d("NotificationDebug", "Notification sent successfully")
+        } catch (e: Exception) {
+            Log.e("NotificationDebug", "Error sending notification: ${e.message}")
+            e.printStackTrace()
         }
     }
 
